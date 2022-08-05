@@ -1,1 +1,32 @@
+// importar node-fetch como fetch
+import fetch from "node-fetch"
+import con  from "./nodejs.js"
 
+con.query("SELECT acc_token FROM campaña", (err, result, fields)=> {
+    if(err) throw err;
+    //console.log(result[0])
+    var resultArray = Object.values(JSON.parse(JSON.stringify(result)))
+    console.log(resultArray[0]['acc_token'])
+    //return;
+  
+
+var token = resultArray[0]['acc_token'];
+console.log(token)
+var campaign_id = "act_12345"
+// funcion async que hace un request a ... 
+async function getFetch(token, campaign_id) {
+const res = await fetch(`https://graph.facebook.com/v14.0/${campaign_id}/insights` , {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    // body del request osea el lugar donde vas a poner la info para que te respondan
+    body: JSON.stringify({
+        date_preset: "last_7d",
+        access_token: token
+    })
+})
+// parsear el json...
+    const data = await res.json()
+}
+})
