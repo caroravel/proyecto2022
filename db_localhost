@@ -1,0 +1,114 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: localhost
+-- Tiempo de generación: 18-08-2022 a las 16:51:47
+-- Versión del servidor: 5.7.17-log
+-- Versión de PHP: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `proyecto2022`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `alertas`
+--
+
+CREATE TABLE `alertas` (
+  `idAlerta` int(255) NOT NULL,
+  `hora` time NOT NULL,
+  `fecha` date NOT NULL,
+  `campaña` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `campaña`
+--
+
+CREATE TABLE `campaña` (
+  `idCampaña` int(255) NOT NULL,
+  `clientes` varchar(255) NOT NULL,
+  `datos` int(255) NOT NULL,
+  `acc_token` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `campaña`
+--
+
+INSERT INTO `campaña` (`idCampaña`, `clientes`, `datos`, `acc_token`) VALUES
+(1, '', 0, 'asdfasfdsadf');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `idUsuario` int(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
+  `Apellido` varchar(255) NOT NULL,
+  `cliente_agencia` tinyint(1) NOT NULL,
+  `contraseña` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `alertas`
+--
+ALTER TABLE `alertas`
+  ADD PRIMARY KEY (`idAlerta`);
+
+--
+-- Indices de la tabla `campaña`
+--
+ALTER TABLE `campaña`
+  ADD PRIMARY KEY (`idCampaña`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `alertas`
+--
+ALTER TABLE `alertas`
+  MODIFY `idAlerta` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `campaña`
+--
+ALTER TABLE `campaña`
+  MODIFY `idCampaña` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(255) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
