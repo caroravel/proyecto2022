@@ -1,26 +1,14 @@
-import { createConnection } from 'mysql';
-
-var con = createConnection({
-  host: "localhost",
-  user: "root",
-  password: "rootroot",
-  database: "proyecto2022"
+const mysql = require('mysql')
+const db = mysql.createConnection({
+host: "localhost",
+user: "root",
+password: "rootroot",
+database:"proyecto2022" 
+})
+db.connect(function(err) {
+    if (err) throw err;
+    console.log("conectado a la bd :)")
+    return;
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("conectado a la bd :)")
-  return;
-});
-
-
-// con.query("SELECT acc_token FROM campaña", (err, result, fields)=> {
-//   if(err) throw err;
-//   console.log(result)
-//   var resultArray = Object.values(JSON.parse(JSON.stringify(result)))
-//   console.log(resultArray[0]['acc_token'])
-//   return;
-// })
-
-
-export default con;
+module.exports = db;
