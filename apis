@@ -3,13 +3,14 @@ const db = require('./config/db')
 const cors = require('cors')
 
 const app = express();
-const PORT = 3002;
+const PORT = 3001;
 
 app.post('/register', (req,res)=>{
-    const nombre = req.body.nombre;
-    const contraseña = req.body.contraseña;
-    const mail = req.body.mail;
-    db.query('INSTER INTO usuario (nombre, contraseña, mail) VALUES (?,?)',[nombre, contraseña, mail], (err,result)=>{
+    const name = req.body.name;
+    const surname = req.body.surname
+    const password = req.body.password;
+    const email = req.body.email;
+    db.query('INSTER INTO usuario (nombre, contraseña, mail) VALUES (?,?)',[name, surname, password, email], (err,result)=>{
         if(err){
             console.log(err)
         }
@@ -18,14 +19,14 @@ app.post('/register', (req,res)=>{
 })
 
 app.post('/login', (req,res)=>{
-    const contraseña = req.body.contraseña;
-    const mail = req.body.mail;
-    db.query('SELECT (mail, contraseña) FROM usuario WHERE mail = ? AND contraseña = ?',[mail, contraseña], (err,result)=>{
+    const password = req.body.password;
+    const email = req.body.email;
+    db.query('SELECT (mail, contraseña) FROM usuario WHERE mail = ? AND contraseña = ?',[email, password], (err,result)=>{
         if(err){
             console.log(err)
         }
         if (result.length > 0){
-            console.log(result);
+            console.log(result)
         } else{
             console.log("Incorrecto")
         }
